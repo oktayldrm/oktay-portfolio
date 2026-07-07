@@ -23,15 +23,13 @@
     --rule: #33342B;
   }
 
-  *{ box-sizing: border-box; }
-  html{ scroll-behavior: smooth; }
-  body{
-    margin:0;
-    background: var(--bg);
-    color: var(--ink);
-    font-family: 'Inter', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
+  *{ body::before{
+    content:"";
+    position: fixed; inset:0;
+    pointer-events:none;
+    z-index: 500;
+    opacity: 0.045;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
   }
 
   /* film grain overlay */
