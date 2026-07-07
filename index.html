@@ -12,76 +12,126 @@
             margin: 0;
             padding: 0;
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
         header {
             background-color: #1f1f1f;
-            padding: 40px 20px;
+            padding: 30px 15px;
             text-align: center;
             border-bottom: 3px solid #ff3e3e;
         }
         header h1 {
             margin: 0;
-            font-size: 2.5rem;
+            font-size: 2rem;
             letter-spacing: 2px;
         }
         header p {
-            margin: 10px 0 0 0;
+            margin: 8px 0 0 0;
             color: #bbb;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
         .container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
+            max-width: 1100px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+        .about-section {
+            background-color: #1a1a1a;
+            padding: 20px;
+            margin-top: 15px;
+            border-radius: 8px;
+            border-left: 5px solid #ff3e3e;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        .about-section p {
+            margin: 0;
+            font-size: 1rem;
+            color: #e0e0e0;
         }
         h2 {
             border-left: 5px solid #ff3e3e;
-            padding-left: 15px;
-            margin-bottom: 30px;
-            font-size: 1.8rem;
+            padding-left: 12px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            margin-top: 35px;
         }
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
         }
         .card {
             background-color: #1f1f1f;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
             transition: transform 0.3s ease;
         }
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
         }
         .card img {
             width: 100%;
             height: auto;
             display: block;
             border-bottom: 2px solid #333;
+            object-fit: cover;
         }
         .card-content {
-            padding: 20px;
+            padding: 15px;
         }
         .card-content h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.4rem;
+            margin: 0 0 8px 0;
+            font-size: 1.25rem;
             color: #ff3e3e;
         }
         .card-content p {
             margin: 0;
             color: #ccc;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
         footer {
             text-align: center;
-            padding: 30px;
+            padding: 30px 15px;
             background-color: #1f1f1f;
             color: #777;
-            margin-top: 60px;
-            font-size: 0.9rem;
+            margin-top: 50px;
+            font-size: 0.85rem;
+            border-top: 1px solid #333;
+        }
+        .footer-location {
+            color: #aaa;
+            font-size: 0.95rem;
+            margin-top: 0;
+            font-weight: bold;
+        }
+
+        /* Mobil Ekranlar İçin Özel Düzenlemeler */
+        @media (max-width: 600px) {
+            header {
+                padding: 25px 10px;
+            }
+            header h1 {
+                font-size: 1.6rem;
+            }
+            header p {
+                font-size: 0.9rem;
+            }
+            .about-section {
+                padding: 15px;
+            }
+            .about-section p {
+                font-size: 0.95rem;
+            }
+            h2 {
+                font-size: 1.3rem;
+                margin-top: 25px;
+            }
+            .grid {
+                grid-template-columns: 1fr; /* Mobilde kartları tek sütun yap */
+                gap: 15px;
+            }
         }
     </style>
 </head>
@@ -89,16 +139,19 @@
 
     <header>
         <h1>OKTAY YILDIRIM</h1>
-        <p>Yönetmen & Senarist / Portfolyo</p>
+        <p>Yönetmen & Senarist</p>
     </header>
 
     <div class="container">
         
+        <div class="about-section">
+            <p>Erciyes Üniversitesi Radyo, Televizyon ve Sinema bölümünde okuyorum. Kısa filmlerimde zamanın, hafızanın ve günümüz iletişiminin kırıldığı anları anlatmayı seviyorum. Bugüne kadar yönettiğim projeler çeşitli ulusal ve uluslararası yarışma ve festivallerde yer aldı.</p>
+        </div>
+
         <h2>Filmler & Afişler</h2>
         <div class="grid">
             <div class="card">
-                <!-- Klasör yapısı hatasını düzeltmek için yollar güncellendi -->
-                <img src="oktay-portfolio/images/od-poster.jpg" alt="Öd Film Afişi">
+                <img src="images/od-poster.jpg" alt="Öd Film Afişi">
                 <div class="card-content">
                     <h3>ÖD</h3>
                     <p>Zaman affeder, insan tekrar eder. Mitolojik ögeler barındıran deneysel kısa film projesi.</p>
@@ -106,7 +159,7 @@
             </div>
             
             <div class="card">
-                <img src="oktay-portfolio/images/perkusyon-poster.jpg" alt="Perküsyon Film Afişi">
+                <img src="images/perkusyon-poster.jpg" alt="Perküsyon Film Afişi">
                 <div class="card-content">
                     <h3>PERKÜSYON</h3>
                     <p>Bir sokak sanatçısının iç dünyasını ve ritmini konu alan kısa film çalışması.</p>
@@ -114,7 +167,7 @@
             </div>
 
             <div class="card">
-                <img src="oktay-portfolio/images/second-bite-poster.jpg" alt="The Second Bite Film Afişi">
+                <img src="images/second-bite-poster.jpg" alt="The Second Bite Film Afişi">
                 <div class="card-content">
                     <h3>THE SECOND BITE</h3>
                     <p>Uluslararası festivallerde yer alan, insan doğası ve seçimleri üzerine odaklanan kısa film.</p>
@@ -125,7 +178,7 @@
         <h2>Kamera Arkası & Sahneler</h2>
         <div class="grid">
             <div class="card">
-                <img src="oktay-portfolio/images/od-still.jpg" alt="Öd Filminden Bir Sahne">
+                <img src="images/od-still.jpg" alt="Öd Filminden Bir Sahne">
                 <div class="card-content">
                     <h3>Öd - Sahne Görüntüsü</h3>
                     <p>Filmin atmosferini ve görsel dilini yansıtan bir gece sahnesi.</p>
@@ -133,7 +186,7 @@
             </div>
 
             <div class="card">
-                <img src="oktay-portfolio/images/perkusyon-still.jpg" alt="Perküsyon Filminden Bir Sahne">
+                <img src="images/perkusyon-still.jpg" alt="Perküsyon Filminden Bir Sahne">
                 <div class="card-content">
                     <h3>Perküsyon - Kare</h3>
                     <p>Sokak performansının ve karakterin yalnızlığının vurgulandığı anlar.</p>
@@ -141,7 +194,7 @@
             </div>
 
             <div class="card">
-                <img src="oktay-portfolio/images/second-bite-bts.jpg" alt="The Second Bite Kamera Arkası">
+                <img src="images/second-bite-bts.jpg" alt="The Second Bite Kamera Arkası">
                 <div class="card-content">
                     <h3>The Second Bite - Set Aşaması</h3>
                     <p>Ekip çalışması ve set ortamından samimi bir kamera arkası karesi.</p>
@@ -152,7 +205,8 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 Oktay Yıldırım. Tüm Hakları Saklıdır.</p>
+        <p class="footer-location">📍 Kayseri - İstanbul</p>
+        <p style="margin-top: 10px;">&copy; 2026 Oktay Yıldırım. Tüm Hakları Saklıdır.</p>
     </footer>
 
 </body>
