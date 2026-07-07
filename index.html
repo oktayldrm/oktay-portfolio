@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oktay Yıldırım — Yönetmen</title>
+<meta name="description" content="Oktay Yıldırım — Yönetmen, Radyo Televizyon ve Sinema. Kısa film portfolyosu.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #12130F;
+    --bg-card: #1C1D18;
+    --bg-card-2: #202117;
+    --steel: #5C82A6;
+    --steel-dim: #3E5A72;
+    --amber: #C97A3D;
+    --amber-bright: #E0964F;
+    --ink: #EDE6D8;
+    --ink-dim: #9A9284;
+    --ink-faint: #625C50;
+    --rule: #33342B;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* film grain overlay */
+  body::before{
+    content:"";
+    position: fixed; inset:0;
+    pointer-events:none;
+    z-index: 500;
+    opacity: 0.045;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+
+  a{ color: inherit; }
+
+  .wrap{ max-width: 1080px; margin: 0 auto; padding: 0 32px; }
+
+  /* NAV */
+  nav{
+    position: sticky; top:0; z-index: 100;
+    background: rgba(18,19,15,0.88);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--rule);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height: 64px;
+  }
+  .wordmark{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 13px; letter-spacing: 0.12em;
+    color: var(--ink);
+    text-decoration:none;
+    text-transform: uppercase;
+  }
+  .navlinks{ display:flex; gap: 28px; font-size: 13px; }
+  .navlinks a{
+    text-decoration:none; color: var(--ink-dim);
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+  .navlinks a:hover{ color: var(--amber-bright); }
+
+  /* HERO */
+  header.hero{
+    padding: 120px 0 90px;
+    position: relative;
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    color: var(--amber);
+    text-transform: uppercase;
+    margin: 0 0 22px;
+  }
+  h1.name{
+    font-family: 'Cormorant', serif;
+    font-weight: 500;
+    font-size: clamp(52px, 9vw, 96px);
+    line-height: 0.98;
+    margin: 0 0 20px;
+    color: var(--ink);
+  }
+  .role{
+    font-family: 'Cormorant', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(20px, 2.6vw, 28px);
+    color: var(--steel);
+    margin: 0 0 36px;
+  }
+  .pitch{
+    max-width: 560px;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-dim);
+  }
+
+  /* FILM STRIP DIVIDER */
+  .filmstrip{
+    height: 26px;
+    display:flex; align-items:center;
+    background: linear-gradient(180deg, #17180F 0%, #1A1B12 100%);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    overflow:hidden;
+  }
+  .filmstrip .holes{
+    display:flex; width:100%; justify-content:space-between;
+    padding: 0 6px;
+  }
+  .filmstrip .holes span{
+    width:10px; height:14px;
+    background: var(--bg);
+    border-radius: 2px;
+    box-shadow: 0 0 0 1px var(--rule);
+    flex-shrink:0;
+  }
+
+  /* PROGRAM SECTION */
+  section.program{ padding: 90px 0 40px; }
+  .section-head{
+    display:flex; align-items:baseline; justify-content:space-between;
+    margin-bottom: 56px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  h2.section-title{
+    font-family:'Cormorant', serif;
+    font-weight:500;
+    font-size: clamp(30px, 4vw, 42px);
+    margin:0;
+  }
+  .section-note{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-faint);
+    letter-spacing: 0.05em;
+  }
+
+  .reel{
+    display:grid;
+    grid-template-columns: 64px 260px 1fr;
+    gap: 32px;
+    align-items: start;
+    padding: 44px 0;
+    border-top: 1px solid var(--rule);
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reel.visible{ opacity: 1; transform: translateY(0); }
+  .reel:last-child{ border-bottom: 1px solid var(--rule); }
+
+  .reel-no{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--amber);
+    padding-top: 6px;
+    letter-spacing: 0.05em;
+  }
+
+  .reel-media{ position: relative; }
+  .poster-frame{
+    width: 100%;
+    aspect-ratio: 3/4;
+    border-radius: 3px;
+    overflow: hidden;
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    position: relative;
+  }
+  .poster-frame img{
+    width:100%; height:100%; object-fit: cover;
+    display:block;
+    filter: grayscale(45%) contrast(1.04);
+    transition: filter 0.5s ease, transform 0.6s ease;
+  }
+  .reel:hover .poster-frame img{
+    filter: grayscale(0%) contrast(1.06);
+    transform: scale(1.02);
+  }
+  .poster-frame.placeholder{
+    display:flex; align-items:center; justify-content:center;
+    padding: 18px;
+    text-align:center;
+  }
+  .poster-frame.placeholder .ph-title{
+    font-family:'Cormorant', serif;
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.25;
+    color: var(--ink-faint);
+  }
+  .bts-thumb{
+    display:flex; align-items:center; gap:8px;
+    margin-top: 10px;
+  }
+  .bts-thumb img{
+    width: 46px; height: 46px; object-fit: cover;
+    border-radius: 2px;
+    filter: grayscale(60%);
+    border: 1px solid var(--rule);
+  }
+  .bts-thumb span{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    color: var(--ink-faint);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .reel-info h3{
+    font-family:'Cormorant', serif;
+    font-weight: 600;
+    font-size: 32px;
+    margin: 0 0 12px;
+  }
+  .reel-info .logline{
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink-dim);
+    margin: 0 0 18px;
+    max-width: 480px;
+  }
+  .badge{
+    display:inline-flex; align-items:center;
+    gap: 6px;
+    font-family:'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.03em;
+    color: var(--steel);
+    border: 1px solid var(--steel-dim);
+    padding: 5px 10px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  .badge.muted{ color: var(--ink-faint); border-color: var(--rule); }
+  .badge::before{ content:"●"; font-size: 8px; }
+
+  .watch{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size: 13px; font-weight: 600;
+    text-decoration:none;
+    color: var(--ink);
+    border-bottom: 1px solid var(--amber);
+    padding-bottom: 3px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .watch:hover{ color: var(--amber-bright); border-color: var(--amber-bright); }
+  .watch svg{ width:12px; height:12px; }
+
+  /* CONTACT */
+  footer{
+    padding: 80px 0 60px;
+  }
+  .contact-grid{
+    display:grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    align-items: end;
+  }
+  footer h2{
+    font-family:'Cormorant', serif;
+    font-weight: 500;
+    font-size: clamp(30px, 4vw, 44px);
+    margin: 0 0 18px;
+    max-width: 460px;
+  }
+  .contact-list{ list-style:none; padding:0; margin:0; }
+  .contact-list li{
+    padding: 14px 0;
+    border-top: 1px solid var(--rule);
+    display:flex; justify-content:space-between;
+    font-size: 14px;
+  }
+  .contact-list li:last-child{ border-bottom: 1px solid var(--rule); }
+  .contact-list .label{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .contact-list a{ text-decoration:none; color: var(--ink); }
+  .contact-list a:hover{ color: var(--amber-bright); }
+
+  .foot-note{
+    margin-top: 60px;
+    font-family:'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-faint);
+    letter-spacing: 0.03em;
+  }
+
+  @media (max-width: 760px){
+    .wrap{ padding: 0 20px; }
+    header.hero{ padding: 90px 0 60px; }
+    .reel{
+      grid-template-columns: 1fr;
+      gap: 18px;
+      padding: 36px 0;
+    }
+    .reel-no{ padding-top:0; }
+    .poster-frame{ max-width: 220px; }
+    .contact-grid{ grid-template-columns: 1fr; }
+    .navlinks{ gap: 16px; }
+    .navlinks a{ font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="wordmark" href="#top">Oktay Yıldırım</a>
+    <div class="navlinks">
+      <a href="#program">Gösterim Programı</a>
+      <a href="#iletisim">İletişim</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <p class="eyebrow">Yönetmen — Radyo, Televizyon ve Sinema</p>
+    <h1 class="name">Oktay<br>Yıldırım</h1>
+    <p class="role">Set İşleyişini Öğrenmeye Devam Eden Bir Yönetmen Adayı</p>
+    <p class="pitch">Erciyes Üniversitesi Radyo, Televizyon ve Sinema bölümünde okuyorum. Kısa filmlerimde zamanın, hafızanın ve günümüz iletişiminin kırıldığı anları anlatmayı seviyorum. Bugüne kadar yönettiğim beş kısa film çeşitli ulusal ve uluslararası yarışma ve festivallerde yer aldı.</p>
+  </div>
+</header>
+
+<div class="filmstrip">
+  <div class="holes wrap" style="display:flex; padding:0;">
+    <div class="holes"></div>
+  </div>
+</div>
+
+<section class="program" id="program">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="section-title">Gösterim Programı</h2>
+      <p class="section-note">5 KISA FİLM — 2023–2025</p>
+    </div>
+
+    <!-- REEL 01 — ÖD -->
+    <article class="reel">
+      <div class="reel-no">R.01</div>
+      <div class="reel-media">
+        <div class="poster-frame">
+          <img src="images/od-poster.jpg" alt="ÖD film afişi">
+        </div>
+        <div class="bts-thumb">
+          <img src="images/od-still.jpg" alt="ÖD filminden kare">
+          <span>Sahneden</span>
+        </div>
+      </div>
+      <div class="reel-info">
+        <h3>ÖD</h3>
+        <p class="logline">Zamana hapsolmuş bir adam üzerinden, modern ilişkilerdeki iletişim kopukluğunu işleyen bir kısa metraj.</p>
+        <span class="badge muted">Festival Sürecinde</span><br>
+        <a class="watch" href="https://drive.google.com/file/d/1dwONJVElNNEQAlZmCQgyB2z1TgfFk35X/view?usp=drive_link" target="_blank" rel="noopener">
+          İzle
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <!-- REEL 02 — The Second Bite -->
+    <article class="reel">
+      <div class="reel-no">R.02</div>
+      <div class="reel-media">
+        <div class="poster-frame">
+          <img src="images/second-bite-poster.jpg" alt="The Second Bite film afişi">
+        </div>
+        <div class="bts-thumb">
+          <img src="images/second-bite-bts.jpg" alt="The Second Bite kamera arkası">
+          <span>Kamera Arkası</span>
+        </div>
+      </div>
+      <div class="reel-info">
+        <h3>The Second Bite</h3>
+        <p class="logline">Akıllı telefonun yasak meyveye dönüştüğü, sosyal medyanın güzellik algısını eleştiren bir stop-motion animasyon.</p>
+        <span class="badge">Balkan Film Food Festival — Resmi Seçki</span><br>
+        <a class="watch" href="https://youtu.be/9LdnLrn6IQU" target="_blank" rel="noopener">
+          İzle
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <!-- REEL 03 — Perküsyon -->
+    <article class="reel">
+      <div class="reel-no">R.03</div>
+      <div class="reel-media">
+        <div class="poster-frame">
+          <img src="images/perkusyon-poster.jpg" alt="Perküsyon film afişi">
+        </div>
+        <div class="bts-thumb">
+          <img src="images/perkusyon-still.jpg" alt="Perküsyon filminden kare">
+          <span>Sahneden</span>
+        </div>
+      </div>
+      <div class="reel-info">
+        <h3>Perküsyon</h3>
+        <p class="logline">Bir sokak sanatçısının rüyasını işleyen ultra-short bir film.</p>
+        <span class="badge">Altın Baklaval Film Akademisi Uluslararası Öğrenci Yarışması — Birincilik Ödülü</span><br>
+        <a class="watch" href="https://youtu.be/UcY90ZW2dgE?si=FOzkCDWEH_UmnyBs" target="_blank" rel="noopener">
+          İzle
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <!-- REEL 04 — Bu Çocuk Neden Böyle Oldu? -->
+    <article class="reel">
+      <div class="reel-no">R.04</div>
+      <div class="reel-media">
+        <div class="poster-frame placeholder">
+          <div class="ph-title">Bu Çocuk<br>Neden<br>Böyle Oldu?</div>
+        </div>
+      </div>
+      <div class="reel-info">
+        <h3>Bu Çocuk Neden Böyle Oldu?</h3>
+        <p class="logline">Eski bir TV programı esas alınarak yapılmış, günümüz toplumuna dair bir eleştiri.</p>
+        <span class="badge">TRT GİY — İkincilik Ödülü</span><br>
+        <a class="watch" href="https://youtu.be/7P_rdNcnk50?si=8_F4kohzy2B2d1A7" target="_blank" rel="noopener">
+          İzle
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <!-- REEL 05 — NEWO Alfa Kötülük -->
+    <article class="reel">
+      <div class="reel-no">R.05</div>
+      <div class="reel-media">
+        <div class="poster-frame placeholder">
+          <div class="ph-title">NEWO Alfa<br>Kötülük</div>
+        </div>
+      </div>
+      <div class="reel-info">
+        <h3>NEWO Alfa Kötülük</h3>
+        <p class="logline">Dede ve torun arasında geçen, günümüz dünya düzenine atıfta bulunan bir radyo tiyatrosu.</p>
+        <span class="badge">TRT GİY — Özel Ödül</span><br>
+        <a class="watch" href="https://youtu.be/uNdYZLeVZ08" target="_blank" rel="noopener">
+          İzle
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+        </a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<div class="filmstrip">
+  <div class="holes wrap" style="display:flex; padding:0;">
+    <div class="holes"></div>
+  </div>
+</div>
+
+<footer id="iletisim">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <h2>Bir set ekibinde yer almak veya projeler konuşmak için iletişime geçebilirsiniz.</h2>
+      </div>
+      <ul class="contact-list">
+        <li><span class="label">E-posta</span><a href="mailto:yildirimoktay456@gmail.com">yildirimoktay456@gmail.com</a></li>
+        <li><span class="label">Telefon</span><a href="tel:+905459667776">+90 545 966 77 76</a></li>
+        <li><span class="label">Konum</span><span>Kayseri — İstanbul'a taşınmaya açık</span></li>
+      </ul>
+    </div>
+    <p class="foot-note">© 2026 OKTAY YILDIRIM</p>
+  </div>
+</footer>
+
+<script>
+  // fill sprocket holes
+  document.querySelectorAll('.filmstrip .holes').forEach(el => {
+    const count = 40;
+    for(let i=0;i<count;i++){
+      const s = document.createElement('span');
+      el.appendChild(s);
+    }
+  });
+
+  // scroll reveal
+  const reels = document.querySelectorAll('.reel');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  reels.forEach(r => io.observe(r));
+</script>
+
+</body>
+</html>
