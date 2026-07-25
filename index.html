@@ -23,17 +23,7 @@
     --rule: #33342B;
   }
 
- *{ box-sizing: border-box; }
-  html{ scroll-behavior: smooth; }
-  body{
-    margin:0;
-    background: var(--bg);
-    color: var(--ink);
-    font-family: 'Inter', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
-  body::before{
+  *{ body::before{
     content:"";
     position: fixed; inset:0;
     pointer-events:none;
@@ -41,6 +31,17 @@
     opacity: 0.045;
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
   }
+
+  /* film grain overlay */
+ body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
   a{ color: inherit; }
 
   .wrap{ max-width: 1080px; margin: 0 auto; padding: 0 32px; }
@@ -318,94 +319,6 @@
     .navlinks{ gap: 16px; }
     .navlinks a{ font-size: 12px; }
   }
-/* GÖSTERİM PROGRAMI — IZGARA */
-  .grid-program{
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 44px 28px;
-  }
-  .card{
-    background: var(--bg-card);
-    border: 1px solid var(--rule);
-    border-radius: 4px;
-    overflow: hidden;
-    display:flex; flex-direction:column;
-    opacity: 0;
-    transform: translateY(18px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-  .card.visible{ opacity:1; transform:none; }
-  .card-poster{
-    position: relative;
-    aspect-ratio: 3/4;
-    background: var(--bg-card-2);
-    display:flex; align-items:center; justify-content:center;
-    overflow:hidden;
-  }
-  .card-poster img{
-    width:100%; height:100%; object-fit: contain;
-    filter: grayscale(35%) contrast(1.03);
-    transition: filter 0.4s ease, transform 0.5s ease;
-  }
-  .card:hover .card-poster img{
-    filter: grayscale(0%) contrast(1.05);
-    transform: scale(1.03);
-  }
-  .card-no{
-    position:absolute; top:10px; left:10px;
-    font-family:'JetBrains Mono', monospace;
-    font-size: 10.5px; color: var(--amber);
-    background: rgba(18,19,15,0.75);
-    padding: 3px 9px; border-radius: 12px;
-    letter-spacing: 0.05em;
-  }
-  .card-body{
-    padding: 18px 20px 22px;
-    display:flex; flex-direction:column; gap: 10px;
-    flex: 1;
-  }
-  .card-body h3{
-    font-family:'Cormorant', serif;
-    font-weight: 600;
-    font-size: 22px;
-    margin: 0;
-  }
-  .card-body .logline{
-    font-size: 13.5px;
-    line-height: 1.55;
-    color: var(--ink-dim);
-    margin: 0;
-    flex: 1;
-  }
-  .card-badge{
-    display:inline-flex; align-items:center; gap:5px;
-    font-family:'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: var(--steel);
-    border: 1px solid var(--steel-dim);
-    padding: 4px 9px;
-    border-radius: 20px;
-    width: fit-content;
-  }
-  .card-badge.muted{ color: var(--ink-faint); border-color: var(--rule); }
-  .card-watch{
-    display:inline-flex; align-items:center; gap:6px;
-    font-size: 12.5px; font-weight:600;
-    text-decoration:none; color: var(--ink);
-    border-bottom: 1px solid var(--amber);
-    padding-bottom: 2px;
-    width: fit-content;
-    transition: color 0.2s, border-color 0.2s;
-  }
-  .card-watch:hover{ color: var(--amber-bright); border-color: var(--amber-bright); }
-  .card-watch svg{ width:11px; height:11px; }
-
-  @media (max-width: 900px){
-    .grid-program{ grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 560px){
-    .grid-program{ grid-template-columns: 1fr; }
-  }
 </style>
 </head>
 <body>
@@ -442,108 +355,138 @@
       <p class="section-note">6 Proje — 2024–2026</p>
     </div>
 
-    <div class="grid-program">
-
-      <article class="card">
-        <div class="card-poster">
-          <span class="card-no">R.01</span>
+    <!-- REEL 01 — ÖD -->
+    <article class="reel">
+      <div class="reel-no">R.01</div>
+      <div class="reel-media">
+        <div class="poster-frame">
           <img src="images/od-poster.jpg" alt="ÖD film afişi">
         </div>
-        <div class="card-body">
-          <h3>ÖD</h3>
-          <p class="logline">Zamana hapsolmuş bir adam üzerinden, modern ilişkilerdeki iletişim kopukluğunu işleyen bir kısa metraj.</p>
-          <span class="card-badge muted">Festival Sürecinde</span>
-          <a class="card-watch" href="https://drive.google.com/file/d/1dwONJVElNNEQAlZmCQgyB2z1TgfFk35X/view?usp=drive_link" target="_blank" rel="noopener">
-            İzle
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
-          </a>
+        <div class="bts-thumb">
+          <img src="images/od-still.jpg" alt="ÖD filminden kare">
+          <span>Sahneden</span>
         </div>
-      </article>
+      </div>
+      <div class="reel-info">
+        <h3>ÖD</h3>
+        <p class="logline">Zamana hapsolmuş bir adam üzerinden, modern ilişkilerdeki iletişim kopukluğunu işleyen bir kısa metraj.</p>
+        <span class="badge muted">Festival Sürecinde</span><br>
+        <a class="watch" href="https://drive.google.com/file/d/1dwONJVElNNEQAlZmCQgyB2z1TgfFk35X/view?usp=drive_link" target="_blank" rel="noopener">
+          İzle
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+        </a>
+      </div>
+    </article>
 
-      <article class="card">
-        <div class="card-poster">
-          <span class="card-no">R.02</span>
+    <!-- REEL 02 — The Second Bite -->
+    <article class="reel">
+      <div class="reel-no">R.02</div>
+      <div class="reel-media">
+        <div class="poster-frame">
+          <img src="images/second-bite-bts.jpg" alt="The Second Bite kamera arkası">
+        </div>
+        <div class="bts-thumb">
           <img src="images/second-bite-poster.jpg" alt="The Second Bite film afişi">
+          <span>Kamera Arkası</span>
         </div>
-        <div class="card-body">
-          <h3>The Second Bite</h3>
-          <p class="logline">Akıllı telefonun yasak meyveye dönüştüğü, sosyal medyanın güzellik algısını eleştiren bir stop-motion animasyon.</p>
-          <span class="card-badge">🏆 Balkan Film Food Festival — Resmi Seçki</span>
-          <a class="card-watch" href="https://youtu.be/9LdnLrn6IQU" target="_blank" rel="noopener">
-            İzle
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
-          </a>
-        </div>
-      </article>
+      </div>
+      <div class="reel-info">
+        <h3>The Second Bite</h3>
+        <p class="logline">Akıllı telefonun yasak meyveye dönüştüğü, sosyal medyanın güzellik algısını eleştiren bir stop-motion animasyon.</p>
+        <span class="badge">🏆Balkan Film Food Festival — Resmi Seçki</span><br>
+        <a class="watch" href="https://youtu.be/9LdnLrn6IQU" target="_blank" rel="noopener">
+          İzle
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+        </a>
+      </div>
+    </article>
 
-      <article class="card">
-        <div class="card-poster">
-          <span class="card-no">R.03</span>
+    <!-- REEL 03 — Perküsyon -->
+    <article class="reel">
+      <div class="reel-no">R.03</div>
+      <div class="reel-media">
+        <div class="poster-frame">
           <img src="images/perkusyon-poster.jpg" alt="Perküsyon film afişi">
         </div>
-        <div class="card-body">
-          <h3>Perküsyon</h3>
-          <p class="logline">Bir sokak sanatçısının rüyasını işleyen ultra-short bir film.</p>
-          <span class="card-badge">🏆 Altın Baklava Film Akademisi Uluslararası Öğrenci Yarışması — Birincilik Ödülü</span>
-          <a class="card-watch" href="https://youtu.be/UcY90ZW2dgE?si=FOzkCDWEH_UmnyBs" target="_blank" rel="noopener">
-            İzle
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
-          </a>
+        <div class="bts-thumb">
+          <img src="images/perkusyon-still.jpg" alt="Perküsyon filminden kare">
+          <span>Sahneden</span>
         </div>
-      </article>
+      </div>
+      <div class="reel-info">
+        <h3>Perküsyon</h3>
+        <p class="logline">Bir sokak sanatçısının rüyasını işleyen ultra-short bir film.</p>
+        <span class="badge">🏆Altın Baklava Film Akademisi Uluslararası Öğrenci Yarışması — Birincilik Ödülü</span><br>
+        <a class="watch" href="https://youtu.be/UcY90ZW2dgE?si=FOzkCDWEH_UmnyBs" target="_blank" rel="noopener">
+          İzle
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+        </a>
+      </div>
+    </article>
 
-      <article class="card">
-        <div class="card-poster">
-          <span class="card-no">R.04</span>
-          <img src="images/baris-manco.png" alt="Bu Çocuk Neden Böyle Oldu? filminden kare">
+    <!-- REEL 04 — Bu Çocuk Neden Böyle Oldu? -->
+    <article class="reel">
+      <div class="reel-no">R.04</div>
+      <div class="reel-media">
+        <div class="poster-frame">
+           <img src="images/baris-manco.png" alt="Video İçinden Görsel">
+          <div class="ph-title">Bu Çocuk<br>Neden<br>Böyle Oldu?</div>
         </div>
-        <div class="card-body">
-          <h3>Bu Çocuk Neden Böyle Oldu?</h3>
-          <p class="logline">Eski bir TV programı (Adam Olacak Çocuk) esas alınarak yapılmış, günümüz toplumuna dair bir eleştiri.</p>
-          <span class="card-badge">🏆 TRT GİY — İkincilik Ödülü</span>
-          <a class="card-watch" href="https://youtu.be/7P_rdNcnk50?si=8_F4kohzy2B2d1A7" target="_blank" rel="noopener">
-            İzle
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
-          </a>
-        </div>
-      </article>
+      </div>
+      <div class="reel-info">
+        <h3>Bu Çocuk Neden Böyle Oldu?</h3>
+        <p class="logline">Eski bir TV programı (Adam Olacak Çocuk) esas alınarak yapılmış, günümüz toplumuna dair bir eleştiri.</p>
+        <span class="badge">🏆TRT GİY — İkincilik Ödülü</span><br>
+        <a class="watch" href="https://youtu.be/7P_rdNcnk50?si=8_F4kohzy2B2d1A7" target="_blank" rel="noopener">
+          İzle
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+        </a>
+      </div>
+    </article>
 
-      <article class="card">
-        <div class="card-poster">
-          <span class="card-no">R.05</span>
-          <img src="images/alfa-kotuluk-2.png" alt="NEWO Alfa Kötülük afişi">
+    <!-- REEL 05 — NEWO Alfa Kötülük -->
+    <article class="reel">
+      <div class="reel-no">R.05</div>
+      <div class="reel-media">
+        <div class="poster-frame">
+           <img src="images/alfa-kotuluk-2.png" alt="Örnek Afiş">
+          <div class="ph-title">NEWO Alfa<br>Kötülük</div>
         </div>
-        <div class="card-body">
-          <h3>NEWO Alfa Kötülük</h3>
-          <p class="logline">Dede ve torun arasında geçen, modern dünya düzenine atıfta bulunan bir radyo tiyatrosu.</p>
-          <span class="card-badge">🏆 TRT GİY — Özel Ödül</span>
-          <a class="card-watch" href="https://youtu.be/uNdYZLeVZ08" target="_blank" rel="noopener">
-            İzle
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
-          </a>
+      </div>
+      <div class="reel-info">
+        <h3>NEWO Alfa Kötülük</h3>
+        <p class="logline">Dede ve torun arasında geçen, modern dünya düzenine atıfta bulunan bir radyo tiyatrosu.</p>
+        <span class="badge">🏆TRT GİY — Özel Ödül</span><br>
+        <a class="watch" href="https://youtu.be/uNdYZLeVZ08" target="_blank" rel="noopener">
+          İzle
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+        </a>
+      </div>
+    </article>
+    
+     <!-- REEL 06 — G'ÖZYAŞI -->
+    <article class="reel">
+      <div class="reel-no">R.06</div>
+      <div class="reel-media">
+        <div class="poster-frame">
+           <img src="images/gozyasi.png" alt="Örnek Afiş">
+          <div class="ph-title">G'ÖZYAŞI</div>
         </div>
-      </article>
+      </div>
+      <div class="reel-info">
+        <h3>G'ÖZYAŞI</h3>
+        <p class="logline">"Ağlamak" eylemine eğlenceli bir bakış açısı.</p>
+        <span class="badge">Bağımsız Proje</span><br>
+        <a class="watch" href="https://youtu.be/Z3plawh_Ksc" target="_blank" rel="noopener">
+          İzle
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+        </a>
+      </div>
+    </article>
 
-      <article class="card">
-        <div class="card-poster">
-          <span class="card-no">R.06</span>
-          <img src="images/gozyasi.png" alt="G'ÖZYAŞI afişi">
-        </div>
-        <div class="card-body">
-          <h3>G'ÖZYAŞI</h3>
-          <p class="logline">"Ağlamak" eylemine eğlenceli bir bakış açısı.</p>
-          <span class="card-badge muted">Bağımsız Proje</span>
-          <a class="card-watch" href="https://youtu.be/Z3plawh_Ksc" target="_blank" rel="noopener">
-            İzle
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
-          </a>
-        </div>
-      </article>
-
-    </div>
   </div>
 </section>
-  
+
 <div class="filmstrip">
   <div class="holes wrap" style="display:flex; padding:0;">
     <div class="holes"></div>
@@ -578,7 +521,7 @@
   });
 
   // scroll reveal
-  const reels = document.querySelectorAll('.card');
+  const reels = document.querySelectorAll('.reel');
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(entry=>{
       if(entry.isIntersecting){
