@@ -318,6 +318,94 @@
     .navlinks{ gap: 16px; }
     .navlinks a{ font-size: 12px; }
   }
+/* GÖSTERİM PROGRAMI — IZGARA */
+  .grid-program{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 44px 28px;
+  }
+  .card{
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    overflow: hidden;
+    display:flex; flex-direction:column;
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .card.visible{ opacity:1; transform:none; }
+  .card-poster{
+    position: relative;
+    aspect-ratio: 3/4;
+    background: var(--bg-card-2);
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+  }
+  .card-poster img{
+    width:100%; height:100%; object-fit: contain;
+    filter: grayscale(35%) contrast(1.03);
+    transition: filter 0.4s ease, transform 0.5s ease;
+  }
+  .card:hover .card-poster img{
+    filter: grayscale(0%) contrast(1.05);
+    transform: scale(1.03);
+  }
+  .card-no{
+    position:absolute; top:10px; left:10px;
+    font-family:'JetBrains Mono', monospace;
+    font-size: 10.5px; color: var(--amber);
+    background: rgba(18,19,15,0.75);
+    padding: 3px 9px; border-radius: 12px;
+    letter-spacing: 0.05em;
+  }
+  .card-body{
+    padding: 18px 20px 22px;
+    display:flex; flex-direction:column; gap: 10px;
+    flex: 1;
+  }
+  .card-body h3{
+    font-family:'Cormorant', serif;
+    font-weight: 600;
+    font-size: 22px;
+    margin: 0;
+  }
+  .card-body .logline{
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--ink-dim);
+    margin: 0;
+    flex: 1;
+  }
+  .card-badge{
+    display:inline-flex; align-items:center; gap:5px;
+    font-family:'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--steel);
+    border: 1px solid var(--steel-dim);
+    padding: 4px 9px;
+    border-radius: 20px;
+    width: fit-content;
+  }
+  .card-badge.muted{ color: var(--ink-faint); border-color: var(--rule); }
+  .card-watch{
+    display:inline-flex; align-items:center; gap:6px;
+    font-size: 12.5px; font-weight:600;
+    text-decoration:none; color: var(--ink);
+    border-bottom: 1px solid var(--amber);
+    padding-bottom: 2px;
+    width: fit-content;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .card-watch:hover{ color: var(--amber-bright); border-color: var(--amber-bright); }
+  .card-watch svg{ width:11px; height:11px; }
+
+  @media (max-width: 900px){
+    .grid-program{ grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px){
+    .grid-program{ grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
