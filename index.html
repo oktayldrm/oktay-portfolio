@@ -5,6 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Oktay Yıldırım — Yönetmen</title>
 <meta name="description" content="Oktay Yıldırım — Radyo, Televizyon ve Sinema. Kısa film portfolyosu.">
+
+<!-- Link önizlemesi (WhatsApp, Instagram, iMessage, LinkedIn vb.) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Oktay Yıldırım">
+<meta property="og:title" content="Oktay Yıldırım — Yönetmen | Director">
+<meta property="og:description" content="Kısa film portfolyosu. Short film portfolio — Radyo, Televizyon ve Sinema.">
+<meta property="og:url" content="https://oktayldrm.github.io/oktay-portfolio/">
+<meta property="og:image" content="https://oktayldrm.github.io/oktay-portfolio/images/oktay-foto.jpeg">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Oktay Yıldırım — Yönetmen | Director">
+<meta name="twitter:description" content="Kısa film portfolyosu. Short film portfolio.">
+<meta name="twitter:image" content="https://oktayldrm.github.io/oktay-portfolio/images/oktay-foto.jpeg">
+
+<!-- Favicon (sekmedeki küçük ikon) -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2312130F'/%3E%3Ctext x='32' y='46' font-size='42' text-anchor='middle' fill='%23C97A3D' font-family='Georgia,serif' font-style='italic'%3EO%3C/text%3E%3C/svg%3E">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -66,13 +84,29 @@
     text-decoration:none;
     text-transform: uppercase;
   }
-  .navlinks{ display:flex; gap: 28px; font-size: 13px; }
+  .navlinks{ display:flex; align-items:center; gap: 28px; font-size: 13px; }
   .navlinks a{
     text-decoration:none; color: var(--ink-dim);
     letter-spacing: 0.04em;
     transition: color 0.2s;
   }
   .navlinks a:hover{ color: var(--amber-bright); }
+
+  /* TR / EN toggle */
+  .lang-toggle{
+    background: none;
+    border: 1px solid var(--rule);
+    border-radius: 20px;
+    padding: 4px 10px;
+    cursor: pointer;
+    font-family:'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--ink-faint);
+    transition: border-color 0.2s;
+  }
+  .lang-toggle:hover{ border-color: var(--amber); }
+  .lang-toggle span.active{ color: var(--amber-bright); }
 
   /* HERO */
   header.hero{
@@ -110,6 +144,7 @@
     line-height: 1.7;
     color: var(--ink-dim);
   }
+  .pitch + .pitch{ margin-top: 16px; }
 
   .hero-portrait{
     position: absolute;
@@ -340,7 +375,7 @@
     .reel-no{ padding-top:0; }
     .poster-frame{ max-width: 220px; }
     .contact-grid{ grid-template-columns: 1fr; }
-    .navlinks{ gap: 16px; }
+    .navlinks{ gap: 14px; }
     .navlinks a{ font-size: 12px; }
   }
 </style>
@@ -351,19 +386,22 @@
   <div class="wrap">
     <a class="wordmark" href="#top">Oktay Yıldırım</a>
     <div class="navlinks">
-      <a href="#program">Gösterim Programı</a>
-      <a href="#iletisim">İletişim</a>
+      <a href="#program" data-i18n="nav_program">Gösterim Programı</a>
+      <a href="#iletisim" data-i18n="nav_contact">İletişim</a>
+      <button class="lang-toggle" id="langToggle" type="button" aria-label="Dil / Language">
+        <span data-l="tr">TR</span> / <span data-l="en">EN</span>
+      </button>
     </div>
   </div>
 </nav>
 
 <header class="hero" id="top">
   <div class="wrap">
-    <p class="eyebrow">Yönetmen — Radyo, Televizyon ve Sinema</p>
+    <p class="eyebrow" data-i18n="eyebrow">Yönetmen — Radyo, Televizyon ve Sinema</p>
     <h1 class="name">Oktay<br>Yıldırım</h1>
     <p class="role">---------------</p>
-   <p class="pitch">Erciyes Üniversitesi Radyo, Televizyon ve Sinema bölümünde okuyorum. Projelerimde zamanın, hafızanın ve günümüz iletişiminin kırıldığı anları anlatmayı seviyorum. Yönettiğim projeler çeşitli ulusal ve uluslararası yarışma ve festivallerde yer aldı.</p>
-<p class="pitch">Set ve masa başı deneyimimi televizyon ve dijital yapım ortamlarında edindim: TRT İç Yapımlar’da güncel programların çekim sürecinde, TRT Tabii’de senaryo değerlendirme ve dramaturji çalışmalarında görev aldım.</p>
+    <p class="pitch" data-i18n="pitch1">Erciyes Üniversitesi Radyo, Televizyon ve Sinema bölümünde okuyorum. Projelerimde zamanın, hafızanın ve günümüz iletişiminin kırıldığı anları anlatmayı seviyorum. Yönettiğim projeler çeşitli ulusal ve uluslararası yarışma ve festivallerde yer aldı.</p>
+    <p class="pitch" data-i18n="pitch2">Set ve masa başı deneyimimi televizyon ve dijital yapım ortamlarında edindim: TRT İç Yapımlar’da güncel programların çekim sürecinde, TRT Tabii’de senaryo değerlendirme ve dramaturji çalışmalarında görev aldım.</p>
     <div class="hero-portrait">
       <img src="images/oktay-foto.jpeg" alt="Oktay Yıldırım">
     </div>
@@ -377,8 +415,8 @@
 <section class="program" id="program">
   <div class="wrap">
     <div class="section-head">
-      <h2 class="section-title">Gösterim Programı</h2>
-      <p class="section-note">6 Proje — 2024–2026</p>
+      <h2 class="section-title" data-i18n="sec_program">Gösterim Programı</h2>
+      <p class="section-note" data-i18n="sec_note">6 Proje — 2024–2026</p>
     </div>
 
     <!-- REEL 01 — ÖD -->
@@ -390,16 +428,16 @@
         </div>
         <div class="bts-thumb">
           <img src="images/od-still.jpg" alt="ÖD filminden kare">
-          <span>Sahneden</span>
+          <span data-i18n="bts_still">Sahneden</span>
         </div>
       </div>
       <div class="reel-info">
         <h3>ÖD</h3>
-        <p class="logline">Zamana hapsolmuş bir adam üzerinden, modern ilişkilerdeki iletişim kopukluğunu işleyen bir kısa metraj.</p>
-        <span class="badge">🏆International Inter University Short Film Festival — Resmi Seçki</span><br>
-        <span class="badge">🏆3. Uluslararası İnsan, Kültür ve Toplum Kısa Film Yarışması — Finalist</span><br>
+        <p class="logline" data-i18n="od_logline">Zamana hapsolmuş bir adam üzerinden, modern ilişkilerdeki iletişim kopukluğunu işleyen bir kısa metraj.</p>
+        <span class="badge" data-i18n="od_b1">🏆International Inter University Short Film Festival — Resmi Seçki</span><br>
+        <span class="badge" data-i18n="od_b2">🏆3. Uluslararası İnsan, Kültür ve Toplum Kısa Film Yarışması — Finalist</span><br>
         <a class="watch" href="https://drive.google.com/file/d/1dwONJVElNNEQAlZmCQgyB2z1TgfFk35X/view?usp=drive_link" target="_blank" rel="noopener">
-          İzle
+          <span data-i18n="watch">İzle</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
         </a>
       </div>
@@ -414,15 +452,15 @@
         </div>
         <div class="bts-thumb">
           <img src="images/second-bite-poster.jpg" alt="The Second Bite film afişi">
-          <span>Kamera Arkası</span>
+          <span data-i18n="bts_behind">Kamera Arkası</span>
         </div>
       </div>
       <div class="reel-info">
         <h3>The Second Bite</h3>
-        <p class="logline">Akıllı telefonun yasak meyveye dönüştüğü, sosyal medyanın güzellik algısını eleştiren bir stop-motion animasyon.</p>
-        <span class="badge">🏆Balkan Film Food Festival — Resmi Seçki</span><br>
+        <p class="logline" data-i18n="sb_logline">Akıllı telefonun yasak meyveye dönüştüğü, sosyal medyanın güzellik algısını eleştiren bir stop-motion animasyon.</p>
+        <span class="badge" data-i18n="sb_b1">🏆Balkan Film Food Festival — Resmi Seçki</span><br>
         <a class="watch" href="https://youtu.be/9LdnLrn6IQU" target="_blank" rel="noopener">
-          İzle
+          <span data-i18n="watch">İzle</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
         </a>
       </div>
@@ -437,16 +475,16 @@
         </div>
         <div class="bts-thumb">
           <img src="images/perkusyon-still.jpg" alt="Perküsyon filminden kare">
-          <span>Sahneden</span>
+          <span data-i18n="bts_still">Sahneden</span>
         </div>
       </div>
       <div class="reel-info">
         <h3>Perküsyon</h3>
-        <p class="logline">Bir sokak sanatçısının rüyasını işleyen ultra-short bir film.</p>
-        <span class="badge">🏆Altın Baklava Film Akademisi Uluslararası Öğrenci Yarışması — Birincilik Ödülü</span><br>
-        <span class="badge">🏆2026 ESMoA Video Art + Film Festival: FREEDOM — Resmi Seçki</span><br>
+        <p class="logline" data-i18n="pk_logline">Bir sokak sanatçısının rüyasını işleyen ultra-short bir film.</p>
+        <span class="badge" data-i18n="pk_b1">🏆Altın Baklava Film Akademisi Uluslararası Öğrenci Yarışması — Birincilik Ödülü</span><br>
+        <span class="badge" data-i18n="pk_b2">🏆2026 ESMoA Video Art + Film Festival: FREEDOM — Resmi Seçki</span><br>
         <a class="watch" href="https://youtu.be/UcY90ZW2dgE?si=FOzkCDWEH_UmnyBs" target="_blank" rel="noopener">
-          İzle
+          <span data-i18n="watch">İzle</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
         </a>
       </div>
@@ -463,10 +501,10 @@
       </div>
       <div class="reel-info">
         <h3>Bu Çocuk Neden Böyle Oldu?</h3>
-        <p class="logline">Eski bir TV programı (Adam Olacak Çocuk) esas alınarak yapılmış, günümüz toplumuna dair bir eleştiri.</p>
-        <span class="badge">🏆TRT GİY — İkincilik Ödülü</span><br>
+        <p class="logline" data-i18n="bc_logline">Eski bir TV programı (Adam Olacak Çocuk) esas alınarak yapılmış, günümüz toplumuna dair bir eleştiri.</p>
+        <span class="badge" data-i18n="bc_b1">🏆TRT GİY — İkincilik Ödülü</span><br>
         <a class="watch" href="https://youtu.be/7P_rdNcnk50?si=8_F4kohzy2B2d1A7" target="_blank" rel="noopener">
-          İzle
+          <span data-i18n="watch">İzle</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
         </a>
       </div>
@@ -483,10 +521,10 @@
       </div>
       <div class="reel-info">
         <h3>NEWO Alfa Kötülük</h3>
-        <p class="logline">Dede ve torun arasında geçen, modern dünya düzenine atıfta bulunan bir radyo tiyatrosu.</p>
-        <span class="badge">🏆TRT GİY — Özel Ödül</span><br>
+        <p class="logline" data-i18n="nk_logline">Dede ve torun arasında geçen, modern dünya düzenine atıfta bulunan bir radyo tiyatrosu.</p>
+        <span class="badge" data-i18n="nk_b1">🏆TRT GİY — Özel Ödül</span><br>
         <a class="watch" href="https://youtu.be/uNdYZLeVZ08" target="_blank" rel="noopener">
-          İzle
+          <span data-i18n="watch">İzle</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
         </a>
       </div>
@@ -503,10 +541,10 @@
       </div>
       <div class="reel-info">
         <h3>G'ÖZYAŞI</h3>
-        <p class="logline">"Ağlamak" eylemine eğlenceli bir bakış açısı.</p>
-        <span class="badge">Bağımsız Proje</span><br>
+        <p class="logline" data-i18n="gz_logline">"Ağlamak" eylemine eğlenceli bir bakış açısı.</p>
+        <span class="badge" data-i18n="gz_b1">Bağımsız Proje</span><br>
         <a class="watch" href="https://youtu.be/Z3plawh_Ksc" target="_blank" rel="noopener">
-          İzle
+          <span data-i18n="watch">İzle</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
         </a>
       </div>
@@ -523,13 +561,14 @@
   <div class="wrap">
     <div class="contact-grid">
       <div>
-        <h2>Yeni projeler, set iş birlikleri ve sinema üzerine konuşmak için.</h2>
+        <h2 data-i18n="ft_h2">Yeni projeler, set iş birlikleri ve sinema üzerine konuşmak için.</h2>
       </div>
       <ul class="contact-list">
-        <li><span class="label">E-posta</span><a href="mailto:yildirimoktay456@gmail.com">🔗 yildirimoktay456@gmail.com</a></li>
-        <li><span class="label">Telefon</span><a href="tel:-">-</a></li>
-        <li><span class="label">Konum</span><span>Kayseri — İstanbul</span></li>
+        <li><span class="label" data-i18n="lbl_email">E-posta</span><a href="mailto:yildirimoktay456@gmail.com">🔗 yildirimoktay456@gmail.com</a></li>
+        <li><span class="label" data-i18n="lbl_phone">Telefon</span><a href="tel:-">-</a></li>
+        <li><span class="label" data-i18n="lbl_location">Konum</span><span>Kayseri — İstanbul</span></li>
         <li><span class="label">Instagram</span><a href="https://www.instagram.com/oktayldrm__/" target="_blank" rel="noopener">🔗 oktayldrm__</a></li>
+        <li><span class="label">CV</span><a href="cv/Oktay-Yildirim-CV.pdf" target="_blank" rel="noopener">🔗 PDF</a></li>
       </ul>
     </div>
     <p class="foot-note">© 2026 OKTAY YILDIRIM</p>
@@ -561,6 +600,63 @@
     });
   }, { threshold: 0.15 });
   reels.forEach(r => io.observe(r));
+
+  // TR / EN geçişi — Türkçe metin HTML'in içinde, İngilizce çeviriler burada
+  const EN = {
+    nav_program: "Screening Program",
+    nav_contact: "Contact",
+    eyebrow: "Director — Radio, Television and Cinema",
+    pitch1: "I study Radio, Television and Cinema at Erciyes University. In my projects, I like to tell stories about the moments where time, memory and contemporary communication break down. The projects I have directed have taken part in various national and international competitions and festivals.",
+    pitch2: "I gained my on-set and behind-the-desk experience in television and digital production: I worked on the shooting process of current affairs programs at TRT İç Yapımlar, took part in script evaluation and dramaturgy work at TRT Tabii, and produced digital video content at OnArt Medya.",
+    sec_program: "Screening Program",
+    sec_note: "6 Projects — 2024–2026",
+    bts_still: "Still",
+    bts_behind: "Behind the Scenes",
+    watch: "Watch",
+    od_logline: "A short film about a man trapped in time, exploring the breakdown of communication in modern relationships.",
+    od_b1: "🏆International Inter University Short Film Festival — Official Selection",
+    od_b2: "🏆3rd International Human, Culture and Society Short Film Competition — Finalist",
+    sb_logline: "A stop-motion animation in which the smartphone becomes the forbidden fruit, criticizing social media's beauty standards.",
+    sb_b1: "🏆Balkan Film Food Festival — Official Selection",
+    pk_logline: "An ultra-short film about a street performer's dream.",
+    pk_b1: "🏆Golden Baklava Film Academy International Student Competition — First Prize",
+    pk_b2: "🏆2026 ESMoA Video Art + Film Festival: FREEDOM — Official Selection",
+    bc_logline: "A critique of today's society, built on an old TV program (Adam Olacak Çocuk).",
+    bc_b1: "🏆TRT GİY — Second Prize",
+    nk_logline: "A radio play between a grandfather and his grandchild, alluding to the modern world order.",
+    nk_b1: "🏆TRT GİY — Special Award",
+    gz_logline: "A playful look at the act of crying.",
+    gz_b1: "Independent Project",
+    ft_h2: "To talk about new projects, set collaborations and cinema.",
+    lbl_email: "Email",
+    lbl_phone: "Phone",
+    lbl_location: "Location"
+  };
+
+  const i18nEls = document.querySelectorAll('[data-i18n]');
+  i18nEls.forEach(el => { el.dataset.tr = el.innerHTML; });
+
+  function setLang(lang){
+    i18nEls.forEach(el => {
+      const en = EN[el.dataset.i18n];
+      el.innerHTML = (lang === 'en' && en) ? en : el.dataset.tr;
+    });
+    document.documentElement.lang = lang;
+    document.title = lang === 'en' ? 'Oktay Yıldırım — Director' : 'Oktay Yıldırım — Yönetmen';
+    document.querySelectorAll('#langToggle [data-l]').forEach(s => {
+      s.classList.toggle('active', s.dataset.l === lang);
+    });
+    try { localStorage.setItem('lang', lang); } catch(e) {}
+  }
+
+  let saved = null;
+  try { saved = localStorage.getItem('lang'); } catch(e) {}
+  const browserIsTR = (navigator.language || 'tr').toLowerCase().startsWith('tr');
+  setLang(saved || (browserIsTR ? 'tr' : 'en'));
+
+  document.getElementById('langToggle').addEventListener('click', () => {
+    setLang(document.documentElement.lang === 'en' ? 'tr' : 'en');
+  });
 </script>
 
 </body>
