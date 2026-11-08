@@ -23,7 +23,19 @@
     --rule: #33342B;
   }
 
-  *{ body::before{
+  * { box-sizing: border-box; }
+
+  body{
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+  }
+
+  /* film grain overlay */
+  body::before{
     content:"";
     position: fixed; inset:0;
     pointer-events:none;
@@ -31,16 +43,6 @@
     opacity: 0.045;
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
   }
-
-  /* film grain overlay */
- body {
-            font-family: 'Arial', sans-serif;
-            background-color: #1a1a1a;
-            color: #ffffff;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
 
   a{ color: inherit; }
 
@@ -77,6 +79,7 @@
     padding: 120px 0 90px;
     position: relative;
   }
+  header.hero .wrap{ position: relative; }
   .eyebrow{
     font-family:'JetBrains Mono', monospace;
     font-size: 12px;
@@ -106,6 +109,21 @@
     font-size: 16px;
     line-height: 1.7;
     color: var(--ink-dim);
+  }
+
+  .hero-portrait{
+    position: absolute;
+    top: 0; right: 0;
+    width: 340px;
+    height: 100%;
+    pointer-events: none;
+    mask-image: linear-gradient(to right, transparent, black 35%);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 35%);
+  }
+  .hero-portrait img{
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: grayscale(70%) contrast(1.05) brightness(0.85);
   }
 
   /* FILM STRIP DIVIDER */
@@ -222,7 +240,7 @@
     text-transform: uppercase;
   }
 
- .reel-info h3{
+  .reel-info h3{
     font-family:'Cormorant', serif;
     font-style: italic;
     font-weight: 500;
@@ -307,6 +325,10 @@
     letter-spacing: 0.03em;
   }
 
+  @media (max-width: 900px){
+    .hero-portrait{ display: none; }
+  }
+
   @media (max-width: 760px){
     .wrap{ padding: 0 20px; }
     header.hero{ padding: 90px 0 60px; }
@@ -321,24 +343,6 @@
     .navlinks{ gap: 16px; }
     .navlinks a{ font-size: 12px; }
   }
-    header.hero .wrap{ position: relative; }
-.hero-portrait{
-  position: absolute;
-  top: 0; right: 0;
-  width: 340px;
-  height: 100%;
-  pointer-events: none;
-  mask-image: linear-gradient(to right, transparent, black 35%);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 35%);
-}
-.hero-portrait img{
-  width: 100%; height: 100%;
-  object-fit: cover;
-  filter: grayscale(70%) contrast(1.05) brightness(0.85);
-}
-@media (max-width: 900px){
-  .hero-portrait{ display: none; }
-}
 </style>
 </head>
 <body>
@@ -360,15 +364,13 @@
     <p class="role">---------------</p>
     <p class="pitch">Erciyes Üniversitesi Radyo, Televizyon ve Sinema bölümünde okuyorum. Projelerimde zamanın, hafızanın ve günümüz iletişiminin kırıldığı anları anlatmayı seviyorum. Bugüne kadar yönettiğim projeler çeşitli ulusal ve uluslararası yarışma ve festivallerde yer aldı.</p>
     <div class="hero-portrait">
-  <img src="images/oktay-foto.jpeg" alt="Oktay Yıldırım">
-</div>
+      <img src="images/oktay-foto.jpeg" alt="Oktay Yıldırım">
+    </div>
   </div>
 </header>
 
 <div class="filmstrip">
-  <div class="holes wrap" style="display:flex; padding:0;">
-    <div class="holes"></div>
-  </div>
+  <div class="holes"></div>
 </div>
 
 <section class="program" id="program">
@@ -454,7 +456,7 @@
       <div class="reel-no">4</div>
       <div class="reel-media">
         <div class="poster-frame">
-           <img src="images/baris-manco.png" alt="Video İçinden Görsel">
+          <img src="images/baris-manco.png" alt="Video İçinden Görsel">
           <div class="ph-title">Bu Çocuk<br>Neden<br>Böyle Oldu?</div>
         </div>
       </div>
@@ -474,7 +476,7 @@
       <div class="reel-no">5</div>
       <div class="reel-media">
         <div class="poster-frame">
-           <img src="images/alfa-kotuluk-22.png" alt="Örnek Afiş">
+          <img src="images/alfa-kotuluk-22.png" alt="Örnek Afiş">
           <div class="ph-title">NEWO Alfa<br>Kötülük</div>
         </div>
       </div>
@@ -488,13 +490,13 @@
         </a>
       </div>
     </article>
-    
-     <!-- REEL 06 — G'ÖZYAŞI -->
+
+    <!-- REEL 06 — G'ÖZYAŞI -->
     <article class="reel">
       <div class="reel-no">6</div>
       <div class="reel-media">
         <div class="poster-frame">
-           <img src="images/gozyasi.png" alt="Örnek Afiş">
+          <img src="images/gozyasi.png" alt="Örnek Afiş">
           <div class="ph-title">G'ÖZYAŞI</div>
         </div>
       </div>
@@ -513,9 +515,7 @@
 </section>
 
 <div class="filmstrip">
-  <div class="holes wrap" style="display:flex; padding:0;">
-    <div class="holes"></div>
-  </div>
+  <div class="holes"></div>
 </div>
 
 <footer id="iletisim">
@@ -536,14 +536,18 @@
 </footer>
 
 <script>
-  // fill sprocket holes
-  document.querySelectorAll('.filmstrip .holes').forEach(el => {
-    const count = 40;
-    for(let i=0;i<count;i++){
-      const s = document.createElement('span');
-      el.appendChild(s);
-    }
-  });
+  // fill sprocket holes (ekran genişliğine göre)
+  function fillHoles(){
+    document.querySelectorAll('.filmstrip .holes').forEach(el => {
+      el.innerHTML = '';
+      const count = Math.floor(el.clientWidth / 26);
+      for(let i = 0; i < count; i++){
+        el.appendChild(document.createElement('span'));
+      }
+    });
+  }
+  fillHoles();
+  window.addEventListener('resize', fillHoles);
 
   // scroll reveal
   const reels = document.querySelectorAll('.reel');
